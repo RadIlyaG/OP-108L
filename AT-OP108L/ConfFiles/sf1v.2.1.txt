@@ -1,0 +1,19 @@
+
+router interface
+create address-prefix 10.10.10.21/24 physical-interface eth1
+create address-prefix 192.168.205.254/24 physical-interface eth2 
+  
+/
+
+router nat static
+create protocol all  original-ip 10.10.10.21  modified-ip 192.168.205.1
+
+/
+
+router nat dynamic
+create interface-name eth1:1
+
+/
+
+commit
+
