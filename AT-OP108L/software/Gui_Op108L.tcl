@@ -402,11 +402,15 @@ proc ButRun {} {
   if {$gaSet(runStatus)!=""} {
     if {[string match *Uut1* $gaSet(fail)]} {
       SQliteAddLine Uut1
+      $gaSet($gaSet(pair).barcode1)
     } elseif {[string match *Uut2* $gaSet(fail)]} {
       SQliteAddLine Uut2
+      $gaSet($gaSet(pair).barcode2)
     } else {
       SQliteAddLine Uut1
       SQliteAddLine Uut2
+      $gaSet($gaSet(pair).barcode1)
+      $gaSet($gaSet(pair).barcode2)
     }
     
   }
