@@ -70,7 +70,7 @@ proc SQliteAddLine {unit} {
   if {$ret!=0} {return $ret}
   
   for {set tr 1} {$tr <= 6} {incr tr} {
-    if [catch {gaSet(dataBase) eval {INSERT INTO tbl VALUES($barcode,$uut,$hostDescription,$date,$tim,$status,$failTestsList,$failReason,0)}} res] {
+    if [catch {gaSet(dataBase) eval {INSERT INTO tbl VALUES($barcode,$uut,$hostDescription,$date,$tim,$status,$failTestsList,$failReason,0,0,0,0,0,0)}} res] {
       set res "Try${tr}_fail.$res"
       puts "[MyTime] DataBase is not updated. Try:<$tr>. Res:<$res>" ; update
 #       if {$tr==4} {
