@@ -124,6 +124,8 @@ package require http
 package require RLAutoUpdate
 ##package require registry
 package require sqlite3
+package require tls
+package require base64
 
 source [info host]/init$gaSet(pair).tcl
 after 200
