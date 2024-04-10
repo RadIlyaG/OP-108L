@@ -398,21 +398,22 @@ proc ButRun {} {
 #     }
     set gaSet(startFrom) $gaSet(curTest)
     update
-  }
-  if {$gaSet(runStatus)!=""} {
-    if {[string match *Uut1* $gaSet(fail)]} {
-      SQliteAddLine Uut1
-      UnregIdBarcode $gaSet($gaSet(pair).barcode1)
-    } elseif {[string match *Uut2* $gaSet(fail)]} {
-      SQliteAddLine Uut2
-      UnregIdBarcode $gaSet($gaSet(pair).barcode2)
-    } else {
-      SQliteAddLine Uut1
-      SQliteAddLine Uut2
-      UnregIdBarcode $gaSet($gaSet(pair).barcode1)
-      UnregIdBarcode $gaSet($gaSet(pair).barcode2)
+  
+    if {$gaSet(runStatus)!=""} {
+      if {[string match *Uut1* $gaSet(fail)]} {
+        SQliteAddLine Uut1
+        UnregIdBarcode $gaSet($gaSet(pair).barcode1)
+      } elseif {[string match *Uut2* $gaSet(fail)]} {
+        SQliteAddLine Uut2
+        UnregIdBarcode $gaSet($gaSet(pair).barcode2)
+      } else {
+        SQliteAddLine Uut1
+        SQliteAddLine Uut2
+        UnregIdBarcode $gaSet($gaSet(pair).barcode1)
+        UnregIdBarcode $gaSet($gaSet(pair).barcode2)
+      }
+      
     }
-    
   }
   SendEmail "OP-108L" [$gaSet(sstatus) cget -text]
   $gaGui(tbrun) configure -relief raised -state normal
